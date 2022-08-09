@@ -46,7 +46,7 @@ const knightMoves = (start, end) => {
     squareRegistry.clear();
 
     const origin = ChessSquare(...start);
-    const target = ChessSquare(...finish);
+    const target = ChessSquare(...end);
 
     const queue = [origin];
     while (!queue.includes(target)) {
@@ -61,8 +61,14 @@ const knightMoves = (start, end) => {
         const prevSquare = path[0].getPredecessor();
         path.unshift(prevSquare);
     }
-    
+
     console.log(`The shortest path was ${path.length - 1} moves`);
     console.log("The moves were:");
     path.forEach(square => console.log(square.name()));
 };
+
+knightMoves([5, 0], [1,2]);
+
+knightMoves([5, 4], [7, 8]);
+
+knightMoves([0,0], [6, 1]);
